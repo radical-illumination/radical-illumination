@@ -1,5 +1,7 @@
 # Radical Illumination
 
+[![Build Status](https://travis-ci.org/radical-illumination/radical-illumination.svg?branch=master)](https://travis-ci.org/radical-illumination/radical-illumination)
+
 This repository contains code that powers radical lighting website.
 
 ## Running in local
