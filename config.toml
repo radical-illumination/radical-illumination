@@ -1,4 +1,4 @@
-baseURL = "products"
+baseURL = "/"
 languageCode = "en-us"
 title = "Radical Illumination"
 theme = "hugo-shopping-product-catalogue-simple"
