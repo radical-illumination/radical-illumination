@@ -1,0 +1,15 @@
+sudo: false
+services:
+  - docker
+env:
+  global:
+    - secure: "X+NNGaRQy7TGBoYzbxKB44myaasd4Q6G8Wb6VuLChrpTmz0nhgHES7Eo0ZuuxNFpIAF54mQnNoUCdZWqb8NiOybuouWorlkOZD78S/UtgWM9zuxcs3p04mOPR3FDIgaChSY1SseV+g8+sdiD828X2LFHLyLKQ0RXv9VaiDQ//dH4Fiy8pClj43zuXVUwF1uIEJYpzu5biPW/Wnj/TrM/IDSL4aeP8VkyMXzIdBy705qjwWq2h1EoZGowljvOJ8HlBPgEjXq74SeH8y8rnsn7KFYL+vjcZl/WKS8TUkwqOBPhpTHMKnT/1a1auSehe8UtRjuUGHkg6QPS2+LQoR9zkZ2uUJcunLW/0dnizbRZWloLInQ37r44dqtGnfo/gFhVdkS/8dQBC7tk1PEqjHVfKDKDVCzj2sJDOtl6cblElEvsVi4Q4iJ9UJtI9u/A4roqT0RrLChku+oRQtFH8emlNqekDL0ijZqlnEP11S6GVUzxxVHeDzI5AxgsvQOocFu7Pxh5KEugWqMHzQGpA5fmwMDKT/JrcPfp1ayHdJiIF6aBP3QCOgRu+BKhbcbMG5CGHR30Eim4oxbhTOEB+hJu+O1bIFOLPbX/kBVf2q397rumg14QQ5mXX7QZJ6L9irUQM8TWWss4oE7q3Vm07rIVhusxBNRiMkkIC5FOCVfdJYs="
+    - secure: "AsDHD/2r0kfR3fPLmDqIu1ZJ1NJiFaJZSUTIv489oc6JkebbRF3NeqqEUTo1sAelzuXjQnJHNqXzfgvHK754Et9iVvflLV+ESIOtiUDMzgAYqjIKjhJBOwAeXjTsK+lTAe0GC96n28gLyjcNxjqOUgINcWpCL/bnDjtfUtmDUFhUEOs/pxEzReBi+N04vXszEwSJUdgmSMFdB5j3Eu4Z3aFJowozAj1Ba7UrbI8wGzXNEhrJv4/xpizyLAxJ8orm6SMc7P8JCJo8sFcxD7lIw1u2oX4X7XqGFz4dJG7ifkeg/NhKxgwCfmp5mtlWUU4FChqbp0qANN4NBtO0nO8AcgYljBpG7Ty/DyyR5onTPxPIoJsIGPTVI1cRXHBuXiXtTE1jVq5q42HMRfnklq+oDjvtqiMA2QYgMoT3OpFX/TaNYFle6Xm53VcRmpdJEOHtNQm+ZSaQ91FfsseI649w2GwoFIhSfYhXKi0GySKI/sA1mJpSco1ju+O9LqSgxI/68umaHviMdojOQLmdqLUttsXaHbJVhu/TKq0NyqdsgIXf1XSNscJ6OtiJQnMJkqjga8F3zjUaiIu/4lOwRfkbS58d26zidMFGvD3lSaDqBuhowVY4SxPptkdbTxJhskgSzqdOqgOp8DmY62Sm+1myHThT05rLvnJZEvTvSiOCxy4="
+before_install:
+  - openssl aes-256-cbc -K $encrypted_47d4490a38c3_key -iv $encrypted_47d4490a38c3_iv -in static/sites.txt.enc -out static/sites.txt -d
+script:
+  - docker build -t $DOCKER_USERNAME/radical-illumination:$TRAVIS_COMMIT .
+after_success:
+  - test -n "$TRAVIS_TAG" && docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  - test -n "$TRAVIS_TAG" && docker tag $DOCKER_USERNAME/radical-illumination:$TRAVIS_COMMIT $DOCKER_USERNAME/radical-illumination:$TRAVIS_TAG
+  - test -n "$TRAVIS_TAG" && docker push $DOCKER_USERNAME/radical-illumination:$TRAVIS_TAG

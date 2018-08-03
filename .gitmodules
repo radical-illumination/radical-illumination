@@ -1,0 +1,3 @@
+[submodule "themes/hugo-shopping-product-catalogue-simple"]
+	path = themes/hugo-shopping-product-catalogue-simple
+	url = https://github.com/kishaningithub/hugo-shopping-product-catalogue-simple.git

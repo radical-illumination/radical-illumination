@@ -1,0 +1,12 @@
+# production
+public/
+data/*.json
+themes/hugo-shopping-product-catalogue-simple
+content/products/*.md
+
+# version control history
+.git/
+
+# misc
+.DS_Store
+

@@ -1,0 +1,4 @@
+#!/bin/sh -el
+importer_location="themes/hugo-shopping-product-catalogue-simple/importer/shopify"
+npm --prefix $importer_location install $importer_location
+cat static/sites.txt | node $importer_location/index.js --category-conversion '{"Mo Ali": "Floor", "Floor Light": "Floor", "Floor Lamp": "Floor", "Pendant Lamp":"Pendant", "Pendants":"Pendant", "Lamp":"Pendant", "Lamp Holder":"Pendant", "Lamp Holders":"Pendant", "Lamps":"Pendant", "Table Lamp": "Table", "Table Light": "Table", "Picture": "Wall", "Wall Lamp": "Wall", "Wall Light": "Wall", "Chandeliers": "Ceiling", "Chandelier": "Ceiling", "Ceiling Lamp": "Ceiling", "Iris": "Ceiling", "Designer Lighting": "Ceiling", "Desk Lamps": "Table", "Desk": "Table", "Lite Zone": "Table", "Bulbs & Accessories":"Bulb", "Cushions": "Furniture", "Industrial Stool": "Furniture", "Coffee Table":"Furniture", "Candle Holders":"Furniture"}' 'content/products'

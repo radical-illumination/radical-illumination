@@ -1,0 +1,9 @@
+# production
+public/
+data/*.json
+themes/hugo-shopping-product-catalogue-simple
+content/products/*.md
+static/sites.txt
+
+# misc
+.DS_Store

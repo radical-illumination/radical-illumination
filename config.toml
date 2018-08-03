@@ -1,0 +1,4 @@
+baseURL = "http://139.59.36.67:8000/"
+languageCode = "en-us"
+title = "Radical Illumination"
+theme = "hugo-shopping-product-catalogue-simple"
