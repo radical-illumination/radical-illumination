@@ -1,6 +1,6 @@
 FROM node:8.11.2-alpine as source
 RUN apk add --update --no-cache ca-certificates wget tar git
-RUN wget -q 'https://github.com/gohugoio/hugo/releases/download/v0.52/hugo_0.52_Linux-64bit.tar.gz' -O hugo.tar.gz && \
+RUN wget -q 'https://github.com/gohugoio/hugo/releases/download/v0.51/hugo_0.51_Linux-64bit.tar.gz' -O hugo.tar.gz && \
     tar -xzf hugo.tar.gz -C /usr/local/bin
 WORKDIR /src/radical-illumination
 COPY . .
